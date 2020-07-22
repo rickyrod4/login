@@ -9,6 +9,7 @@
     <div id="registration">
         <h3>Registration</h3>
         <form action="/register" method="POST">
+            {% csrf_token %}
             <label for="first_name">First_Name</label>
             <input type="text" name="first_name" id="first_name">
             <br>

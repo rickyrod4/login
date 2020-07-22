@@ -4,3 +4,6 @@ from django.shortcuts import render, redirect
 
 def index(request):
     return render(request,'index.html')
+
+def register(request):
+    return redirect('/')

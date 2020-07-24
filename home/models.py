@@ -14,6 +14,13 @@ class UserManager(models.Manager):
             password = pw_hash
         )
 
+    def athenticate(self, email, password):
+        users_with_email = self.filter(email=email)
+        if not users_with_email:
+            return False
+        user = users_with_email[0]
+        return bcrypt.checkpw(password.encode(),user.password.encode())
+
 # Create your models here.
 class User(models.Model):
     first_name = models.CharField(max_length=255)

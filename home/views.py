@@ -8,6 +8,11 @@ def index(request):
     return render(request,'index.html')
 
 def register(request):
+    errors = User.objects.validate(request.POST)
+    if errors:
+        for field, value in errors.items():
+            messages.error(request, value
+        return redirect('/')
     User.objects.register(request.POST)
     return redirect('/')
 
